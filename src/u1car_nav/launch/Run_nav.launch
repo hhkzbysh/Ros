@@ -1,0 +1,13 @@
+<launch>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find u1car_nav)/map/map.yaml" output="screen">
+   <param name="frame_id" value="map" />
+  </node>
+
+  <include file="$(find u1car_nav)/launch/amcl.launch" > </include>
+
+  <include file="$(find u1car_nav)/launch/move_base.launch" > </include>
+
+<node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find u1car_nav)/rviz/nav.rviz" />
+      
+</launch>
